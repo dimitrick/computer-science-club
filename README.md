@@ -1,1 +1,1 @@
-# computer science club
+# computer science club challenges
