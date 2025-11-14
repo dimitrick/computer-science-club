@@ -9,7 +9,8 @@ public class Challenge63 {
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == ':') {
                 colons = true;
-            } else if (input.charAt(i) == '.') {
+            }
+            if (input.charAt(i) == '.') {
                 periods = true;
             }
         }
@@ -27,9 +28,6 @@ public class Challenge63 {
                 if (numbers[i].isEmpty()) {
                     return "Neither";
                 }
-                
-
-
                 
                 //iterate through characters
                 for (int j = 0; j < numbers[i].length(); j++) {
