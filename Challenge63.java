@@ -16,21 +16,34 @@ public class Challenge63 {
 
         //IPv4
         if (periods && !colons) {
-            String[] numbers = input.split("\\.", 3);
-
+            String[] numbers = input.split("\\.", -1);
+            
+            if (numbers.length != 4) {
+                return "Neither";
+            }
+            
             //iterate through sections split by periods
             for (int i = 0; i < numbers.length; i++) {
-                if (numbers[i].length() != 1 && numbers[i].charAt(0) == 0) {
+                if (numbers[i].isEmpty()) {
                     return "Neither";
                 }
-                if (Integer.parseInt(numbers[i]) > 255 || Integer.parseInt(numbers[i]) < 0) {
-                    return "Neither";
-                }
+                
+
+
+                
                 //iterate through characters
                 for (int j = 0; j < numbers[i].length(); j++) {
                     if (!Character.isDigit(numbers[i].charAt(j))) {
                         return "Neither";
                     }
+                }
+
+                if (numbers[i].length() > 1 && numbers[i].charAt(0) == '0') {
+                    return "Neither";
+                }
+                
+                if (Integer.parseInt(numbers[i]) > 255 || Integer.parseInt(numbers[i]) < 0) {
+                    return "Neither";
                 }
             }
             return "IPv4";
@@ -38,7 +51,11 @@ public class Challenge63 {
 
         //IPv6
         if (!periods && colons) {
-            String[] hexnums = input.split(":", 7);
+            String[] hexnums = input.split(":", -1);
+
+            if (hexnums.length != 8) {
+                return "Neither";
+            }
 
             //iterate through sections split by colons
             for (int i = 0; i < hexnums.length; i++) {
